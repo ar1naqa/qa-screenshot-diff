@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment variables
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Screenshots and comparison results
+records/
+new_records/
+compare_records/
+
+# OS
+.DS_Store
+Thumbs.db 
