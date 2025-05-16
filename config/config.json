@@ -1,6 +1,7 @@
 {
     "urls": [
         "https://chulakov.ru/work/24ai",
+        "https://ru-stage.chulakov.dev/work/24ai",
         "https://chulakov.ru/work/tinkovfund",
         "https://chulakov.ru/work/ikea-service",
         "https://chulakov.ru/work/megafon-emotion",
@@ -37,9 +38,5 @@
         "https://chulakov.ru/work/sber-support",
         "https://chulakov.ru/work/ekoniva",
         "https://chulakov.ru/work/playkot"
-    ],
-    "credentials": {
-        "username": "chulakov",
-        "password": "Muq1+So1-Hy8"
-    }
+    ]
 } 

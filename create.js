@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs-extra');
 const path = require('path');
+require('dotenv').config();
 const { RESOLUTIONS, DIRECTORIES, createDirectories, getScreenshotName, checkBaseScreenshot } = require('./utils');
 
 async function getExistingScreenshots() {
@@ -228,8 +229,11 @@ async function createScreenshots() {
                 });
 
                 // Авторизация
-                if (credentials) {
-                    await page.authenticate(credentials);
+                if (process.env.AUTH_USERNAME && process.env.AUTH_PASSWORD) {
+                    await page.authenticate({
+                        username: process.env.AUTH_USERNAME,
+                        password: process.env.AUTH_PASSWORD
+                    });
                 }
 
                 // Переходим на страницу и ждем полной загрузки
