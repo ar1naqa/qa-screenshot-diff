@@ -4,6 +4,7 @@ const path = require('path');
 const PNG = require('pngjs').PNG;
 const { default: pixelmatch } = require('pixelmatch');
 const express = require('express');
+require('dotenv').config();
 const { RESOLUTIONS, DIRECTORIES, createDirectories, getScreenshotName, clearDirectory, checkBaseScreenshot } = require('./utils');
 
 async function compareImages(img1Path, img2Path, diffPath) {
@@ -201,8 +202,11 @@ async function compareScreenshots() {
                 await page.setExtraHTTPHeaders({
                     'Accept-Language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
                 });
-                if (credentials) {
-                    await page.authenticate(credentials);
+                if (process.env.AUTH_USERNAME && process.env.AUTH_PASSWORD) {
+                    await page.authenticate({
+                        username: process.env.AUTH_USERNAME,
+                        password: process.env.AUTH_PASSWORD
+                    });
                 }
                 try {
                     console.log(`Загрузка страницы для разрешения ${resolution.width}x${resolution.height}...`);
