@@ -18,6 +18,8 @@ records/
 new_records/
 compare_records/
 
+!compare_records/index.html
+
 # OS
 .DS_Store
 Thumbs.db 
