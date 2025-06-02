@@ -46,6 +46,8 @@ async function checkBaseScreenshot(url, resolution) {
     return await fs.pathExists(screenshotPath);
 }
 
+// тестовый комментарий
+
 module.exports = {
     RESOLUTIONS,
     DIRECTORIES,
