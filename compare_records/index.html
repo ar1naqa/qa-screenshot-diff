@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сравнение скриншотов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .comparison {
+            margin-bottom: 40px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .comparison h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .screenshots {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .screenshot {
+            flex: 1;
+            min-width: 300px;
+        }
+        .screenshot img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+        }
+        .screenshot h3 {
+            margin: 10px 0;
+            color: #666;
+        }
+        .info {
+            margin: 10px 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Результаты сравнения скриншотов</h1>
+    <div id="results"></div>
+
+    <script>
+        fetch('/results')
+            .then(response => response.json())
+            .then(results => {
+                const resultsDiv = document.getElementById('results');
+                results.forEach(result => {
+                    const comparison = document.createElement('div');
+                    comparison.className = 'comparison';
+                    
+                    comparison.innerHTML = `
+                        <h2>${result.title}</h2>
+                        <div class="info">
+                            <p>URL: ${result.url}</p>
+                            <p>Разрешение: ${result.resolution}</p>
+                            <p>Количество различий: ${result.differences}</p>
+                        </div>
+                        <div class="screenshots">
+                            <div class="screenshot">
+                                <h3>Базовый скриншот</h3>
+                                <img src="/${result.baseScreenshot}" alt="Базовый скриншот">
+                            </div>
+                            <div class="screenshot">
+                                <h3>Новый скриншот</h3>
+                                <img src="/${result.newScreenshot}" alt="Новый скриншот">
+                            </div>
+                            <div class="screenshot">
+                                <h3>Различия</h3>
+                                <img src="/${result.diffScreenshot}" alt="Различия">
+                            </div>
+                        </div>
+                    `;
+                    
+                    resultsDiv.appendChild(comparison);
+                });
+            })
+            .catch(error => {
+                console.error('Ошибка при загрузке результатов:', error);
+                document.getElementById('results').innerHTML = '<p>Ошибка при загрузке результатов</p>';
+            });
+    </script>
+</body>
+</html> 
