@@ -147,15 +147,14 @@ class ScreenshotManager {
             `;
             document.head.appendChild(style);
 
-            const cookiePanel = document.querySelector('.CookiePanel_CookiePanel__m9za0');
+            const cookiePanel = document.querySelector('.CookiePanel_cookiePanel__A2nXt');
             if (cookiePanel) cookiePanel.remove();
 
             const cookieStyle = document.createElement('style');
             cookieStyle.textContent = `
-                .CookiePanel_CookiePanel__m9za0,
-                .CookiePanel_container__nMgov,
-                .CookiePanel_content__KK7ay,
-                .CookieButton_CookieButton__aipHg {
+                .CookiePanel_cookiePanel__A2nXt,
+                .CookieText_CookieText__ReQWT,
+                .CookieButton_root__lGon0 {
                     display: none !important;
                     visibility: hidden !important;
                     opacity: 0 !important;
